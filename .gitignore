@@ -3,6 +3,12 @@ bin/
 bin-debug/
 bin-release/
 
+*.aux
+*.fdb_latexmk
+*.log
+*.synctex.gz
+
+
 # Other files and folders
 .settings/
 
