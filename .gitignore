@@ -11,6 +11,8 @@ bin-release/
 *.out
 *.synctex.gz
 *.cls
+*.o
+*.o~
 
 # Other files and folders
 .settings/
