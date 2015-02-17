@@ -4,8 +4,8 @@ CFLAGS = -c -Wall
 LDFLAGS =
 RM = rm -f
 
-EXECUTABLE = blockcode
-SOURCES = blockcode.cpp
+EXECUTABLE = canon
+SOURCES = blockcode.cpp canon.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(SOURCES) $(EXECUTABLE) clean
