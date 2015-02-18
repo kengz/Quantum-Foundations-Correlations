@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 
-
 ////////////////
 // BC methods //
 ////////////////
@@ -104,14 +103,15 @@ vector<int>* Canon::getBC()
 
 
 
-int main()
-{
-	Canon *can = new Canon();
-	can->handler();
-	can->runBC();
 
-	return 0;
-}
+// int main()
+// {
+// 	Canon *can = new Canon();
+// 	can->handler();
+// 	can->runBC();
+
+// 	return 0;
+// }
 
 
 
