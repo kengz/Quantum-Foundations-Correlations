@@ -4,8 +4,8 @@ CFLAGS = -c -Wall
 LDFLAGS =
 RM = rm -f
 
-EXECUTABLE = parseFri
-SOURCES = blockcode.cpp canon.cpp bitadder.cpp parseFri.cpp
+EXECUTABLE = bitadder
+SOURCES = bitadder.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(SOURCES) $(EXECUTABLE) clean
