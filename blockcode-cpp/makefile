@@ -5,7 +5,7 @@ LDFLAGS =
 RM = rm -f
 
 EXECUTABLE = bitadder
-SOURCES = bitadder.cpp
+SOURCES = bitadder.cpp blockcode.cpp canon.cpp parseFri.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(SOURCES) $(EXECUTABLE) clean

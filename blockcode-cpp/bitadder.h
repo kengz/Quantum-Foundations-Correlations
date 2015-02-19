@@ -16,7 +16,6 @@ public:
 	void printAll();
 	// get the binary form of number 'n'
 	bool* asBinary(int n) { return allBinaries[n]; }
-	void test();
 private:
 	// the position of bit for add(); the length of bit
 	int pos, length, height;
@@ -24,10 +23,10 @@ private:
 	bool *current, *bit;
 	// the 2D array of all binaries generated
 	bool **allBinaries;
+	// print the *current binary
 	void printCurrent();
+	// increment the current binary by 1
 	void add();
 };
-
-// change bins to array. much faster on bigger dataset
 
 #endif

@@ -8,7 +8,6 @@ class bitAdder;
 // parse Fripertinger's coefficient rep of BC, generate the corres BC in txt file for use with algorithm
 parseFri::parseFri()
 {
-	// ba=NULL;
 	src = vector<string> {
 		"bc-data/bc2_3_2.txt",
 		"bc-data/bc2_3_3.txt",
@@ -68,9 +67,6 @@ void parseFri::readSrc(int i)
 
 		ofs << endl;
 
-		// X = (*coef)[0]; Y = (*coef)[1]; Z = (*coef)[2];
-		// delete coef;
-
 		// parse the BC coef, ignoring commas
 		do {
 			// get next line, make as sstream
@@ -92,59 +88,52 @@ void parseFri::readSrc(int i)
 	ifs.close();
 	ofs.close();
 
-	ifs.open (tar[i], ifstream::app);
-
 	// continue with making BC
 }
 
-void parseFri::makeBC()
+void parseFri::writeTar(int i)
 {
 	// assigning the variables for making BC from bitAdder
 	X = (*coef)[0]; Y = (*coef)[1]; Z = (*coef)[2];
 
-	// value of coef
-	int n;
-	bool* b;
-
+	bool* binary;
+	// prepare the binaries for the coef
 	ba = new bitAdder(X);
-	ba->genBins();
-	int splitY = 0;
+	ba->genBinaries();
+	
+	ofstream ofs;
+	ofs.open (tar[i], ofstream::app);
 	// start iterator from beyond spec (+3 in coef)
+	int splitWhen = 0;
 	for (auto it = coef->begin()+3; it != coef->end(); ++it)
 	{
-		if (splitY++ % Y == 0) cout << "Split" << endl;
-		cout << "var is " << *it << endl;
-		b = ba->getBin(7);
-		// for(bool m : *b) {}
-		for (int i = 0; i < X; ++i)
-		{
-			cout << "bool arr" << b[i] << endl;
-		}
-		// for(bool b : *(ba->getBin(*it)) )
-		// 	cout << b << " ";
-		// ba->getBin(n);
+		// splitter every end of BC
+		if (splitWhen++ % Y == 0) ofs << endl;
+		// cout << "coef is " << *it << endl;
+		// get binary specified by coef and print
+		binary = ba->asBinary(*it);
+		for (int x = 0; x < X; ++x)
+			ofs << binary[x] << " ";
+		ofs << endl;
 	}
 
-	
+	ofs.close();
 }
 
-
-void test()
+// run the method to parse and generate BC, formatted to be taken in by canon.cpp
+void parseFripertinger()
 {
-	parseFri meh;
-	// for (int i = 0; i < 7; ++i)
-	// {
-	// 	meh.readSrc(i);
-	// }
-	// ofs << sizeof(meh.src);
-	// meh.readSrc(6);
-	meh.readSrc(1);
-	meh.makeBC();
+	parseFri fri;
+	for (int i = 0; i < 7; ++i)
+	{
+		fri.readSrc(i);
+		fri.writeTar(i);
+	}
 
 }
 
 int main()
 {
-	test();
+	parseFripertinger();
 	return 0;
 }
