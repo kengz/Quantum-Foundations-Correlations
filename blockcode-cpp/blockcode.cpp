@@ -178,6 +178,11 @@
  	return match;
  }
 
+///////////////////////////////////////////////////
+// Brute Force:                                  //
+// try all nonredundant X-swaps, Y-swaps, flips. //
+// Complexity: X! Y! 2^X                         //
+///////////////////////////////////////////////////
 /** find a match to BC by brute force; must gen. all BC instances first. */
  bool BlockCode::bruteForce(int *otherData, bool showFail)
  {
@@ -208,7 +213,7 @@
 
 /** 
  * Generate all nonredundant BC instances for bruteForce()
- * Try: X-swaps, Y-swaps, flip.
+ * Try inside out: X-swaps, Y-swaps, flip.
  */
  void BlockCode::genAllInstances()
  {
