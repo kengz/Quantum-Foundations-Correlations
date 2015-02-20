@@ -132,8 +132,15 @@ void parseFripertinger()
 
 }
 
-int main()
-{
-	parseFripertinger();
-	return 0;
-}
+
+
+// void test()
+// {
+// }
+
+// int main()
+// {
+// 	test();
+// 	// parseFripertinger();
+// 	return 0;
+// }

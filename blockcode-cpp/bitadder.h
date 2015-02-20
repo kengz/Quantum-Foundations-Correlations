@@ -16,6 +16,7 @@ public:
 	void printAll();
 	// get the binary form of number 'n'
 	bool* asBinary(int n) { return allBinaries[n]; }
+	int getHeight() { return height; }
 private:
 	// the position of bit for add(); the length of bit
 	int pos, length, height;

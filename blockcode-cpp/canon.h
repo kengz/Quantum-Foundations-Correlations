@@ -11,18 +11,21 @@ public:
 	~Canon(){}
 	void handler();
 	void runBC();
-private:
-	int X, Y, Z;
-	vector<vector<int>*> vecBC;
-	BlockCode *prime;
-	// handler submethods
-	void menu();
-	vector<int>* getBC();
-	void getDim();
-	// BC submethods
+	void printBC(int);
 	void makePrimeBC();
 	void compareBC();
-	void printBC(int);
+private:
+	int X, Y, Z;
+	int** inputBC;
+	// BlockCode *prime;
+	BlockCode prime;
+	// handler submethods
+	void menu();
+	void getBC(int);
+	void getDim();
+	// BC submethods
+	
+	
 	
 };
 

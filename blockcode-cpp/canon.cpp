@@ -1,6 +1,5 @@
 #include "canon.h"
 #include <iostream>
-#include <vector>
 
 ////////////////
 // BC methods //
@@ -15,23 +14,26 @@ void Canon::runBC()
 /** Create a primary BC object and generate all instanaces of its class. */
 void Canon::makePrimeBC()
 {
-	prime = new BlockCode(X, Y, vecBC[0]);
+	// cout << inputBC[0];
+	// int *ptr = inputBC[0];
+	prime = BlockCode(X, Y, inputBC[0]);
+	// prime = BlockCode(X, Y, inputBC[0]);
 	cout << "The primary BC is: " << endl;
-	prime->printBC(0);
+	// prime.printBC(0);
 
 	cout << "Generating all BC instances for brute force" << endl << "..." << endl;
-	prime->genAllInstances();
+	// prime.genAllInstances();
 	cout << "Instances generated." << endl << endl;
 }
 /** Compare all other saved BC to the primary BC object. */
 void Canon::compareBC()
 {
 	cout << "Comparing all other BCs to primary:" << endl;
-	for (int i = 1; i < vecBC.size(); ++i)
+	for (int i = 1; i < Y; ++i)
 	{
 		cout << "\n==========================\n" << endl;
 		printBC(i);
-		prime->bruteForce(vecBC[i]);
+		prime.bruteForce(inputBC[i]);
 		cout << "==========================\n" << endl;
 	}
 }
@@ -44,7 +46,7 @@ void Canon::printBC(int which)
 	for (int y = 0; y < Y; y++) {
 		for (int x = 0; x < X; x++) {
 			// get this instance, access each entry i
-			cout << (*vecBC[which])[i] << " ";
+			cout << inputBC[which][i] << " ";
 			i++;
 		}
 		cout << endl;
@@ -61,10 +63,17 @@ void Canon::handler()
 {
 	menu();
 	getDim();
-	while(Z > 0) {
-		vecBC.push_back(getBC());
-		Z--;
+	// index for next data set, read vertical y
+	int y = 0;
+	while(y < Z) {
+		getBC(y);
+		y++;
 	}
+
+	cout << inputBC[0];
+	cout << inputBC[0][0];
+	cout << inputBC[0][1];
+	cout << inputBC[0][2];
 }
 
 void Canon::menu()
@@ -84,21 +93,40 @@ void Canon::getDim()
 	cout << "Total number of BCs: " << endl;
 	cin >> Z;
 	cout << "Entered: " << Z << endl;
+
+	// init inputBC (change name to data set)
+	inputBC = new int*[Y];
+	for (int y = 0; y < Y; ++y)
+	{
+		inputBC[y] = new int[X];
+		memset(inputBC[y], 0, sizeof(int)*y);
+	}
 }
-vector<int>* Canon::getBC()
+void Canon::getBC(int y)
 {
+	
 	cout << "Enter BlockCode: " << endl;
-	vector<int> *arr = new vector<int>;
-	int z = X*Y, t;
-	while(z > 0) {
-		z--;
-		cin >> t;
-		arr->push_back(t);
+	int z = 0;
+	while(z < X*Y) {
+		cin >> inputBC[y][z];
+		z++;
 	}
 	cout << "==========================\n" << endl;
-
-	return arr;
 }
+
+
+
+
+// void test()
+// {
+// 	// int** inputBC = new int*[8];
+// 	// for (int i = 0; i < 8; ++i)
+// 	// {
+// 	// 	inputBC[i] = new int[3];
+// 	// 	memset(inputBC[i], 0, sizeof(int)*3);
+// 	// }
+// 	// cout << "size after memset: " << sizeof(inputBC) << endl;
+// }
 
 
 
@@ -106,9 +134,14 @@ vector<int>* Canon::getBC()
 
 // int main()
 // {
-// 	Canon *can = new Canon();
-// 	can->handler();
-// 	can->runBC();
+// 	test();
+// 	// Canon *can = new Canon();
+// 	// can->handler();
+// 	// can->makePrimeBC();
+// 	// can->printBC(0);
+// 	// can->printBC(1);
+// 	// can->printBC(2);
+// 	// can->runBC();
 
 // 	return 0;
 // }
