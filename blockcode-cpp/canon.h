@@ -13,7 +13,7 @@ public:
 	// handles IO
 	void handler();
 	// run BC generation and comparison
-	void runBC();
+	void runBC(int z, bool compare, bool showFail);
 	void printBC(int);
 private:
 	// BC width, height, and number of BC being entered
@@ -27,9 +27,9 @@ private:
 	void getBC(int);
 	void getDim();
 	// BC submethods
-	void makePrimeBC();
+	void makePrimeBC(int z);
 	void countRedundancy();
-	void compareBC(bool showFail = false);
+	void compareBC(int z, bool showFail);
 	
 };
 

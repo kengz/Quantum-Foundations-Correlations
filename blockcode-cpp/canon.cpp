@@ -7,18 +7,19 @@
 // BC methods //
 ////////////////
 /** Turn the primary BC into a BC object, generate all instances by brute force, then run comparison with all other BCs. */
-void Canon::runBC()
+void Canon::runBC(int z = 0, bool compare = false, bool showFail = false)
 {
-	makePrimeBC();
+	makePrimeBC(z);
 	// countRedundancy();
-	compareBC();
+	if (compare)
+		compareBC(z, showFail);
 }
 
 
 /** Create a primary BC object and generate all instanaces of its class. */
-void Canon::makePrimeBC()
+void Canon::makePrimeBC(int z = 0)
 {
-	prime = BlockCode(X, Y, inputBC[0]);
+	prime = BlockCode(X, Y, inputBC[z]);
 	cout << "The primary BC is: " << endl;
 	prime.printBC(0);
 
@@ -31,15 +32,20 @@ void Canon::countRedundancy()
 	cout << "Number of redundant BC instances: " << red << endl;
 }
 /** Compare all other saved BC to the primary BC object. param true to show fail matches */
-void Canon::compareBC(bool showFail)
+void Canon::compareBC(int z = 0, bool showFail = false)
 {
 	cout << "Comparing all other BCs to primary:" << endl;
-	for (int i = 1; i < Z; ++i)
+	for (int i = 0; i < Z; ++i)
 	{
-		cout << "\n==========================\n" << endl;
-		printBC(i);
-		prime.bruteForce(inputBC[i], showFail);
-		cout << "==========================\n" << endl;
+		// compare the z-BC to other BC
+		if (i != z)
+		{
+			cout << "\n==========================\n" << endl;
+			printBC(i);
+			prime.bruteForce(inputBC[i], showFail);
+			cout << "==========================\n" << endl;
+		}
+		
 	}
 }
 /** Print a saved BC in proper format. */
@@ -138,7 +144,9 @@ int main()
 	// timing
 	clock_t time = clock();
 
-	can->runBC();
+	can->runBC(0, true);
+	can->runBC(1, true);
+	can->runBC(2, true);
 
 	double dif = (double)( clock() - time ) / CLOCKS_PER_SEC ;
 	printf ("\nElasped time is %f seconds.", dif );
