@@ -10,7 +10,7 @@
 void Canon::runBC(int z = 0, bool compare = false, bool showFail = false)
 {
 	makePrimeBC(z);
-	// countRedundancy();
+	countRedundancy();
 	if (compare)
 		compareBC(z, showFail);
 }
@@ -20,7 +20,12 @@ void Canon::runBC(int z = 0, bool compare = false, bool showFail = false)
 void Canon::makePrimeBC(int z = 0)
 {
 	prime = BlockCode(X, Y, inputBC[z]);
-	cout << "The primary BC is: " << endl;
+	cout << "==========================" << endl;
+	cout << "==========================" << endl;
+	cout << "Start program. Run BC code. " << endl;
+	cout << "==========================" << endl;
+	cout << "==========================" << endl;
+	cout << "Constructed primary BC is: " << endl;
 	prime.printBC(0);
 
 	cout << "Generating all BC instances for brute force" << endl << "..." << endl;
