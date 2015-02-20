@@ -28,6 +28,9 @@ public:
 	void printBC(int);
 	// match i-instance of this BC and *otherData
 	bool matchBC(int i, int *otherData);
+	// match BC instances 1, j
+	bool matchBC(int i, int j);
+	int countRedundancy();
 	// brute force methods. Must immediately follow constructor.
 	bool bruteForce(int *otherData, bool showFail = false);
 	void genAllInstances();

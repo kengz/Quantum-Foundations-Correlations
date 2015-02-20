@@ -179,6 +179,40 @@
  	return match;
  }
 
+
+/** Match two instances of this BC, return boolean. */
+ bool BlockCode::matchBC(int i, int j)
+ {
+ 	bool match = true;
+ 	for (int k = 0; k < len; ++k) {
+ 		// compare each term of instances i and j
+ 		if ( instances[i][k] != instances[j][k] ) {
+ 			match = false;
+ 			break;
+ 		}
+ 	}
+ 	// if (match)
+ 	// 	cout << "Match: BC " << i << "," << j << endl;
+ 	// else
+ 	// 	cout << "Not-Match: BC " << i << "," << j << endl;
+ 	return match;
+ }
+ /** Count the redundancy in all instances of BC generated */
+ int BlockCode::countRedundancy()
+ {
+ 	int red = 0;
+ 	for (int i = 0; i < numInst-1; ++i) {
+ 		for (int j = i+1; j < numInst; ++j){
+ 			// find first duplicate and break
+ 			if (matchBC(i, j)) {
+ 				red++;
+ 				break;
+ 			}
+ 		}
+ 	}
+ 	return red;
+ }
+
 ///////////////////////////////////////////////////
 // Brute Force:                                  //
 // try all nonredundant X-swaps, Y-swaps, flips. //
@@ -208,7 +242,7 @@
 
 	// if exhaustively find none, return false;
  	cout << "No match found by bruteForce()" << endl;
-	cout << "Total instances: " << numInst << endl;
+ 	cout << "Total instances: " << numInst << endl;
  	return false;
  }
 

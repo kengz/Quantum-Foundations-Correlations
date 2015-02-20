@@ -10,8 +10,10 @@
 void Canon::runBC()
 {
 	makePrimeBC();
+	// countRedundancy();
 	compareBC();
 }
+
 
 /** Create a primary BC object and generate all instanaces of its class. */
 void Canon::makePrimeBC()
@@ -22,6 +24,11 @@ void Canon::makePrimeBC()
 
 	cout << "Generating all BC instances for brute force" << endl << "..." << endl;
 	prime.genAllInstances();
+}
+void Canon::countRedundancy()
+{
+	int red = prime.countRedundancy();
+	cout << "Number of redundant BC instances: " << red << endl;
 }
 /** Compare all other saved BC to the primary BC object. param true to show fail matches */
 void Canon::compareBC(bool showFail)
@@ -134,7 +141,7 @@ int main()
 	can->runBC();
 
 	double dif = (double)( clock() - time ) / CLOCKS_PER_SEC ;
-	printf ("Elasped time is %f seconds.", dif );
+	printf ("\nElasped time is %f seconds.", dif );
 
 
 	// can->makePrimeBC();

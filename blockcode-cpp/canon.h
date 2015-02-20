@@ -28,6 +28,7 @@ private:
 	void getDim();
 	// BC submethods
 	void makePrimeBC();
+	void countRedundancy();
 	void compareBC(bool showFail = false);
 	
 };
