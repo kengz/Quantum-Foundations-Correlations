@@ -22,7 +22,7 @@
  BlockCode::BlockCode(int X, int Y, int *data): sizeX(X), sizeY(Y), len(X*Y)
  {
  	// set the max number of instances computed/stored
- 	// const int MAX_INSTANCES = 2000000;
+ 	MAX_INSTANCES = 2000000;
 
  	// init instances 2D array; 
  	instances = new int*[MAX_INSTANCES];
@@ -213,15 +213,10 @@
  		memset(instances[i], 0, sizeof(int)*len);
  	// and reset all ops
  	resetOps();
- 	printOps('X');
- 	printOps('Y');
- 	printOps('F');
 	// generate all binaries for flipper permutations
  	ba.genBinaries();
 
  	// try all binaries for flipper
- 	int countX = 0;
- 	cout << "ba height: " << ba.getHeight() << endl;
  	for(int i = 0; i < ba.getHeight(); i++ ) {
  		if (numInst > MAX_INSTANCES) {
  			cout << "Exceed max instances allocated. Quit bruteForce()." << endl;
@@ -233,17 +228,13 @@
  			if (numInst > MAX_INSTANCES)
  				break;
  			do {
- 				countX++;
- 				printOps('X');
 				// if there's more space, compute instance and save
  				if (numInst > MAX_INSTANCES)
  					break;
  				makeTData();
-
  			} while (next_permutation( (*indexX).begin(), (*indexX).end() ));
  		} while (next_permutation( (*indexY).begin(), (*indexY).end() ));
  	}
- 	cout << "countX: " << countX << endl;
  }
 
 /**
@@ -323,31 +314,31 @@
 
 
 
- void test()
- {
- 	// int arr[9] = {1,1,1,1,0,1,1,1,1};
- 	int arr[4] = {0,0,0,0};
- 	int *ptr = arr;
- 	BlockCode bc = BlockCode(2,2,ptr);
- 	// bc.test();
- 	bc.genAllInstances();
- 	cout << "num of inst: " << bc.getNumInst() << endl;
- 	for (int i = 0; i < bc.getNumInst(); ++i)
- 	{
- 		bc.printBC(i);
- 	}
- 	// bc.printBC(0);
- 	// bc.printBC(1);
- 	// bc.printBC(2);
- 	// bc.printBC(3);
-	// cout << "calling brute force: " << endl;
-	// bc.bruteForce(arr2);
- }
+ // void test()
+ // {
+ // 	// int arr[9] = {1,1,1,1,0,1,1,1,1};
+ // 	int arr[4] = {0,0,0,0};
+ // 	int *ptr = arr;
+ // 	BlockCode bc = BlockCode(2,2,ptr);
+ // 	// bc.test();
+ // 	bc.genAllInstances();
+ // 	cout << "num of inst: " << bc.getNumInst() << endl;
+ // 	for (int i = 0; i < bc.getNumInst(); ++i)
+ // 	{
+ // 		bc.printBC(i);
+ // 	}
+ // 	// bc.printBC(0);
+ // 	// bc.printBC(1);
+ // 	// bc.printBC(2);
+ // 	// bc.printBC(3);
+	// // cout << "calling brute force: " << endl;
+	// // bc.bruteForce(arr2);
+ // }
 
- int main()
- {
-	// cout << sizeof();
- 	test();	
+ // int main()
+ // {
+	// // cout << sizeof();
+ // 	test();	
 
- 	return 0;
- }
+ // 	return 0;
+ // }

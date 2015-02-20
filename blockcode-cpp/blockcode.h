@@ -51,7 +51,8 @@ private:
 	// the number of instances
 	int numInst;
 	// max instances allocated in memory
-	int MAX_INSTANCES = 2000000;
+	int MAX_INSTANCES;
+
 };
 
 #endif

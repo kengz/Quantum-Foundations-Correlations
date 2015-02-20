@@ -19,10 +19,10 @@ void Canon::makePrimeBC()
 	prime = BlockCode(X, Y, inputBC[0]);
 	// prime = BlockCode(X, Y, inputBC[0]);
 	cout << "The primary BC is: " << endl;
-	// prime.printBC(0);
+	prime.printBC(0);
 
 	cout << "Generating all BC instances for brute force" << endl << "..." << endl;
-	// prime.genAllInstances();
+	prime.genAllInstances();
 	cout << "Instances generated." << endl << endl;
 }
 /** Compare all other saved BC to the primary BC object. */
@@ -69,11 +69,6 @@ void Canon::handler()
 		getBC(y);
 		y++;
 	}
-
-	cout << inputBC[0];
-	cout << inputBC[0][0];
-	cout << inputBC[0][1];
-	cout << inputBC[0][2];
 }
 
 void Canon::menu()
@@ -132,19 +127,21 @@ void Canon::getBC(int y)
 
 
 
-// int main()
-// {
-// 	test();
-// 	// Canon *can = new Canon();
-// 	// can->handler();
-// 	// can->makePrimeBC();
-// 	// can->printBC(0);
-// 	// can->printBC(1);
-// 	// can->printBC(2);
-// 	// can->runBC();
+int main()
+{
+	// test();
+	Canon *can = new Canon();
+	can->handler();
+	can->makePrimeBC();
+	// can->compareBC();
+	
+	can->printBC(0);
+	can->printBC(1);
+	can->printBC(2);
+	// can->runBC();
 
-// 	return 0;
-// }
+	return 0;
+}
 
 
 
