@@ -28,7 +28,7 @@ private:
 	void getDim();
 	// BC submethods
 	void makePrimeBC();
-	void compareBC();
+	void compareBC(bool showFail = false);
 	
 };
 

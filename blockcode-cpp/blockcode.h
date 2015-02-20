@@ -29,7 +29,7 @@ public:
 	// match i-instance of this BC and *otherData
 	bool matchBC(int i, int *otherData);
 	// brute force methods. Must immediately follow constructor.
-	bool bruteForce(int *otherData);
+	bool bruteForce(int *otherData, bool showFail = false);
 	void genAllInstances();
 	// deprecated, Grey code, replaced by bitAdder
 	// void genGray(int, bool print = false);

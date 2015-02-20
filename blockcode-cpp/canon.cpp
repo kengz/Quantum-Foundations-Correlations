@@ -25,14 +25,14 @@ void Canon::makePrimeBC()
 	cout << "Instances generated." << endl << endl;
 }
 /** Compare all other saved BC to the primary BC object. */
-void Canon::compareBC()
+void Canon::compareBC(bool showFail)
 {
 	cout << "Comparing all other BCs to primary:" << endl;
 	for (int i = 1; i < Y; ++i)
 	{
 		cout << "\n==========================\n" << endl;
 		printBC(i);
-		prime.bruteForce(inputBC[i]);
+		prime.bruteForce(inputBC[i], showFail);
 		cout << "==========================\n" << endl;
 	}
 }

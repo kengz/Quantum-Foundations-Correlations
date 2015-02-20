@@ -175,28 +175,34 @@
  			break;
  		}
  	}
- 	if (match)
- 		cout << "==Match:==\t";
- 	else
- 		cout << "Not-Match:\t";
  	return match;
  }
 
 /** find a match to BC by brute force; must gen. all BC instances first. */
- bool BlockCode::bruteForce(int *otherData)
+ bool BlockCode::bruteForce(int *otherData, bool showFail)
  {
 	// finally, compare all instances to the original
  	for (int i = 0; i < numInst; ++i)
  	{
 		// once find a match, print it, end loop, return true
  		bool match = matchBC(i, otherData);
- 		printBC(i);
- 		if ( match )
+ 		// option to show failed search
+ 		if (showFail && !match) {
+ 			cout << "Not-Match:\t";
+ 			printBC(i);
+ 		}
+
+ 		// once find match, print, exit loop by returning
+ 		if ( match ) {
+ 			cout << "==Match:==\t";
+ 			printBC(i);
  			return true;
+ 		}
  	}
 
 	// if exhaustively find none, return false;
  	cout << "No match found by bruteForce()" << endl;
+	cout << "Total instances: " << numInst << endl;
  	return false;
  }
 
