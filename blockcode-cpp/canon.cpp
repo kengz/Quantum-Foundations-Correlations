@@ -22,7 +22,6 @@ void Canon::makePrimeBC()
 
 	cout << "Generating all BC instances for brute force" << endl << "..." << endl;
 	prime.genAllInstances();
-	cout << "Instances generated." << endl << endl;
 }
 /** Compare all other saved BC to the primary BC object. param true to show fail matches */
 void Canon::compareBC(bool showFail)

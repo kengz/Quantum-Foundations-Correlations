@@ -240,6 +240,7 @@
  			} while (next_permutation( (*indexX).begin(), (*indexX).end() ));
  		} while (next_permutation( (*indexY).begin(), (*indexY).end() ));
  	}
+ 	cout << numInst << " BC instances generated." << endl << endl;
  }
 
 /**
