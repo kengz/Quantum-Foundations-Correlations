@@ -24,11 +24,11 @@ void Canon::makePrimeBC()
 	prime.genAllInstances();
 	cout << "Instances generated." << endl << endl;
 }
-/** Compare all other saved BC to the primary BC object. */
+/** Compare all other saved BC to the primary BC object. param true to show fail matches */
 void Canon::compareBC(bool showFail)
 {
 	cout << "Comparing all other BCs to primary:" << endl;
-	for (int i = 1; i < Y; ++i)
+	for (int i = 1; i < Z; ++i)
 	{
 		cout << "\n==========================\n" << endl;
 		printBC(i);
@@ -122,7 +122,6 @@ void Canon::getBC(int z)
 // 	// }
 // 	// cout << "size after memset: " << sizeof(inputBC) << endl;
 // }
-
 
 
 int main()
