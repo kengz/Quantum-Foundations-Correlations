@@ -91,8 +91,8 @@ void Canon::getDim()
 	for (int z = 0; z < Z; z++)
 	{
 		// one BC of size X*Y
-		inputBC[z] = new int[X*Y];
-		memset(inputBC[z], 0, sizeof(int)*X*Y);
+		inputBC[z] = new int[X*Y]();
+		// memset(inputBC[z], 0, sizeof(int)*X*Y);
 	}
 }
 void Canon::getBC(int z)

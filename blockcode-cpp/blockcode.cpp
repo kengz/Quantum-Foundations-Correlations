@@ -28,8 +28,8 @@
  	instances = new int*[MAX_INSTANCES];
  	for (int i = 0; i < MAX_INSTANCES; ++i)
  	{
- 		instances[i] = new int[len];
- 		memset(instances[i], 0, sizeof(int)*len);
+ 		instances[i] = new int[len]();
+ 		// memset(instances[i], 0, sizeof(int)*len);
  	}
  	// save data
  	this->data = data;
@@ -49,7 +49,8 @@
  * Constructor for testing purposes. Init data to all false = 0.
  */
  BlockCode::BlockCode(int X, int Y): BlockCode(X, Y, new int) {
- 	memset(data, 0, sizeof(int)* X*Y);
+ 	data = new int[len]();
+ 	// memset(data, 0, sizeof(int)* X*Y);
  }
 
  void BlockCode::resetOps()
@@ -256,9 +257,10 @@
  void BlockCode::makeTData()
  {
  	// get fresh array of all 0 for transformation, to be saved – no waste.
- 	int trans[len];
- 	tData = trans;
- 	memset(tData, 0, sizeof(int) * len);
+ 	// int trans[len];
+ 	// tData = trans;
+ 	tData = new int[len]();
+ 	// memset(tData, 0, sizeof(int) * len);
 
  	int size = 0;
 	// traverse and construct new transformed matrix

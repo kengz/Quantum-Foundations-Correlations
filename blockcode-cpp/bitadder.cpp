@@ -15,14 +15,14 @@ bitAdder::bitAdder(int length)
 	pos = length; bit = NULL;
 
 	// the current binary string
-	current = new bool[length];
-	memset(current, 0, sizeof(bool) * length);
+	current = new bool[length]();
+	// memset(current, 0, sizeof(bool) * length);
 
 	// set of binaries. init 2D array = **allBinaries. memset to false = 0
 	allBinaries = new bool*[height];
 	for(int i = 0; i < height; ++i) {
-		allBinaries[i] = new bool[length];
-		memset(allBinaries[i], false, sizeof(bool)*length);
+		allBinaries[i] = new bool[length]();
+		// memset(allBinaries[i], false, sizeof(bool)*length);
 	}
 	// delete method, for reference
 	// for(int i = 0; i < sizeY; ++i) {
