@@ -1,7 +1,8 @@
 #include "bitadder.h"
 #include <iostream>
 #include <math.h>
-#include "time.h"
+
+using namespace std;
 
 /////////////////
 // Constructor //

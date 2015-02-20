@@ -1,9 +1,7 @@
 #ifndef BITADDER_H
 #define BITADDER_H
 
-#include <vector>
-
-using namespace std;
+// using namespace std;
 
 class bitAdder
 {

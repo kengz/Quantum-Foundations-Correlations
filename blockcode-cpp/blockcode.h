@@ -2,6 +2,7 @@
 #define BLOCKCODE_H
 
 #include "bitadder.h"
+#include <vector>
 
 using namespace std;
 

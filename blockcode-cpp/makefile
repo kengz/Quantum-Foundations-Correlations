@@ -1,11 +1,10 @@
-# CC = clang++ -std=c++11 -stdlib=libc++
 CC = g++ -std=c++11
 CFLAGS = -c -Wall
 LDFLAGS =
 RM = rm -f
 
 EXECUTABLE = canon
-SOURCES = blockcode.cpp bitadder.cpp canon.cpp
+SOURCES = bitadder.cpp blockcode.cpp canon.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(SOURCES) $(EXECUTABLE) clean

@@ -1,5 +1,7 @@
 #include "canon.h"
 #include <iostream>
+#include "time.h"
+
 
 ////////////////
 // BC methods //
@@ -14,10 +16,7 @@ void Canon::runBC()
 /** Create a primary BC object and generate all instanaces of its class. */
 void Canon::makePrimeBC()
 {
-	// cout << inputBC[0];
-	// int *ptr = inputBC[0];
 	prime = BlockCode(X, Y, inputBC[0]);
-	// prime = BlockCode(X, Y, inputBC[0]);
 	cout << "The primary BC is: " << endl;
 	prime.printBC(0);
 
@@ -63,14 +62,13 @@ void Canon::handler()
 {
 	menu();
 	getDim();
-	// index for next data set, read vertical y
-	int y = 0;
-	while(y < Z) {
-		getBC(y);
-		y++;
+	// parse all of the Z-th BCs specified
+	int z = 0;
+	while(z < Z) {
+		getBC(z);
+		z++;
 	}
 }
-
 void Canon::menu()
 {
 	cout 
@@ -89,22 +87,24 @@ void Canon::getDim()
 	cin >> Z;
 	cout << "Entered: " << Z << endl;
 
-	// init inputBC (change name to data set)
-	inputBC = new int*[Y];
-	for (int y = 0; y < Y; ++y)
+	// there will be Z BC's input as 1D array of length X*Y
+	inputBC = new int*[Z];
+	for (int z = 0; z < Z; z++)
 	{
-		inputBC[y] = new int[X];
-		memset(inputBC[y], 0, sizeof(int)*y);
+		// one BC of size X*Y
+		inputBC[z] = new int[X*Y];
+		memset(inputBC[z], 0, sizeof(int)*X*Y);
 	}
 }
-void Canon::getBC(int y)
+void Canon::getBC(int z)
 {
-	
 	cout << "Enter BlockCode: " << endl;
-	int z = 0;
-	while(z < X*Y) {
-		cin >> inputBC[y][z];
-		z++;
+	int w = 0;
+	// parse z-th BC of length X*Y
+	while(w < X*Y) {
+		// input each term put into z-BC, index w
+		cin >> inputBC[z][w];
+		w++;
 	}
 	cout << "==========================\n" << endl;
 }
@@ -125,20 +125,25 @@ void Canon::getBC(int y)
 
 
 
-
-
 int main()
 {
-	// test();
 	Canon *can = new Canon();
 	can->handler();
-	can->makePrimeBC();
+
+	// timing
+	clock_t time = clock();
+
+	can->runBC();
+
+	double dif = (double)( clock() - time ) / CLOCKS_PER_SEC ;
+	printf ("Elasped time is %f seconds.", dif );
+
+
+	// can->makePrimeBC();
 	// can->compareBC();
-	
-	can->printBC(0);
-	can->printBC(1);
-	can->printBC(2);
-	// can->runBC();
+	// can->printBC(0);
+	// can->printBC(1);
+	// can->printBC(2);
 
 	return 0;
 }
