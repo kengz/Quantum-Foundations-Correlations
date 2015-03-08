@@ -1,6 +1,6 @@
 Quantum-Foundations-Correlations
 ================================
-`Updated Feb 2015`
+`Updated March 2015`
 
 Research notes and algorithm implementation on Quantum Foundations: `Correlations in C3` and `Blockcode Algorithm`, from Perimeter Institute, Summer 2014.
 
